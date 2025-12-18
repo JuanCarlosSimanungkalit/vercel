@@ -1,9 +1,12 @@
 {
-  "buildCommand": "cd frontend && npm run build",
+  "buildCommand": "npm run build -w frontend",
   "outputDirectory": "frontend/dist",
   "devCommand": "npm run dev",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "VITE_SUPABASE_URL": "@VITE_SUPABASE_URL",
+    "VITE_SUPABASE_ANON_KEY": "@VITE_SUPABASE_ANON_KEY",
+    "VITE_API_URL": "@VITE_API_URL"
   },
   "regions": ["sin1"],
   "functions": {
