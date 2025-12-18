@@ -1,17 +1,14 @@
-import express from "express";
-import cors from "cors";
 import "dotenv/config";
+import cors from "cors";
+import express from "express";
 
-import authRoutes from "./routes/auth.routes.js";
-import adminRoutes from "./routes/admin.routes.js";
-import influencerRoutes from "./routes/influencer.routes.js";
-import reviewRoutes from "./routes/review.routes.js";
-import bookingRoutes from "./routes/booking.routes.js";
-import chatRoutes from "./routes/chat.routes.js";
+import authRoutes from "../../backend/src/routes/auth.routes.js";
+import adminRoutes from "../../backend/src/routes/admin.routes.js";
+import influencerRoutes from "../../backend/src/routes/influencer.routes.js";
+import reviewRoutes from "../../backend/src/routes/review.routes.js";
+import bookingRoutes from "../../backend/src/routes/booking.routes.js";
+import chatRoutes from "../../backend/src/routes/chat.routes.js";
 
-const app = express();
-
-// CORS configuration for Vercel
 const corsOptions = {
   origin: [
     "http://localhost:3000",
@@ -22,6 +19,8 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
+
+const app = express();
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -36,7 +35,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/chats", chatRoutes);
 
-// Health check endpoint
+// Health check
 app.get("/api/health", (req, res) => {
   res.json({ status: "Backend is running" });
 });
